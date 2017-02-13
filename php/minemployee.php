@@ -2,10 +2,10 @@
 
 include "dbconfig.php";
 
-departmentFewestEmployees();
+Query1();
 
 /**
- * departmentFewestEmployees
+ * Query1
  *
  * Returns an array of the departments with the fewest
  * employees as JSON.
@@ -13,7 +13,7 @@ departmentFewestEmployees();
  * Makes an SQL execution using the creds provided in dbconfig.php
  * fetches all 1 or more departments with the lowest number of employees.
  */
-function departmentFewestEmployees() {
+function Query1() {
     $db = connectDB();
     $query = ""; /* <--- TO DO -------- */
 
