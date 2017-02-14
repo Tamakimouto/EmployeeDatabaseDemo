@@ -15,7 +15,7 @@ Query1();
  */
 function Query1() {
     $db = connectDB();
-    $query = ""; /* <--- TO DO -------- */
+    $query = "SELECT MIN(empCount) FROM (SELECT dept_name, COUNT(dept_no) AS empCount FROM departments, employees, dept_emp WHERE employees.emp_no = dept_emp.emp_no AND dept_emp.dept_no = departments.dept_no)"; /* <--- TO DO -------- */
 
     $prep = $db->prepare("$query");
     $prep->execute();
