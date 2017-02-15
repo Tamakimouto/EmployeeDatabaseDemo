@@ -7,15 +7,15 @@ Query1();
 /**
  * Query1
  *
- * Returns an array of the departments with the fewest
+ * Returns an array of the department with the fewest
  * employees as JSON.
  *
  * Makes an SQL execution using the creds provided in dbconfig.php
- * fetches all 1 or more departments with the lowest number of employees.
+ * fetches the department with the lowest number of employees.
  */
 function Query1() {
     $db = connectDB();
-    $query = "SELECT MIN(empCount) FROM (SELECT dept_name, COUNT(dept_no) AS empCount FROM departments, employees, dept_emp WHERE employees.emp_no = dept_emp.emp_no AND dept_emp.dept_no = departments.dept_no)"; /* <--- TO DO -------- */
+    $query = "SELECT dept_name, COUNT(departments.dept_no) AS empCount FROM departments, employees, dept_emp WHERE employees.emp_no = dept_emp.emp_no AND dept_emp.dept_no = departments.dept_no GROUP BY dept_name HAVING empCount < 17500;"; /* <--- TO DO -------- */
 
     $prep = $db->prepare("$query");
     $prep->execute();
@@ -33,4 +33,5 @@ function Query1() {
 
 }
 
-?>
+?
+
