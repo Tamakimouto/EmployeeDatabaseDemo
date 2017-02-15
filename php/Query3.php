@@ -15,7 +15,7 @@ Query3();
  */
 function Query3() {
 	$db = connectDB();
-	$query = "SELECT first_name, last_name, TIMESTAMPDIFF(YEAR, from_date, to_date) AS years, TIMESTAMPDIFF(MONTH, from_date, to_date) % 12 AS months FROM employees, dept_manager WHERE employees.emp_no = dept_manager.emp_no AND TIMESTAMPDIFF(YEAR, from_date, to_date) > 8008;"; /* <--- TO DO -------- */
+	$query = "SELECT first_name, last_name, TIMESTAMPDIFF(YEAR, from_date, CURDATE()) AS years, TIMESTAMPDIFF(MONTH, from_date, CURDATE()) % 12 AS months FROM employees, dept_manager WHERE employees.emp_no = dept_manager.emp_no AND TIMESTAMPDIFF(YEAR, from_date, to_date) > 8008;"; /* <--- TO DO -------- */
 
 	$prep = $db->prepare("$query");
 	$prep->execute();
