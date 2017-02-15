@@ -16,9 +16,7 @@ Query2();
  */
 function Query2() {
 	$db = connectDB();
-	$queryMale = "SELECT AVG(salary) AS avgMale FROM salaries, employees WHERE employees.emp_no = salaries.emp_no AND gender = 'M'";
-	$queryFemale = "SELECT AVG(salary) AS avgFemale FROM salaries, employees WHERE employees.emp_no = salaries.emp_no AND gender = 'F'";
-	$query = "SELECT MAX(avgMale/avgFemale)"; /* <--- TO DO -------- */
+	$query = "SELECT y.avgFemale/x.avgMale AS 'avg female salaries:avg male salaries' FROM (SELECT AVG(salary) AS avgMale FROM salaries, employees WHERE employees.emp_no = salaries.emp_no AND gender = 'M') x JOIN (SELECT AVG(salary) AS avgFemale FROM salaries, employees WHERE employees.emp_no = salaries.emp_no AND gender = 'F')y ON 1=1;"; /* <--- TO DO -------- */
 
 	$prep = $db->prepare("$query");
 	$prep->execute();
