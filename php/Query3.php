@@ -23,7 +23,8 @@ function Query3() {
 	$result = array();
 
 	foreach($prep as $row) {
-		array_push($result, $row["DepartmentName"]); /* <----- TO DO (?) ---- */
+		array_push($result, $row["last_name"]);
+		array_push($result, $row["first_name"]);
 	}
 
 	header("Content-Type: application/json");
