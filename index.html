@@ -40,7 +40,16 @@
                     </div>
                     <div id="collapseCustom" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <!-- FORM HERE -->
+			  <label><input type="checkbox" v-model="checkedNames" id="employees" value="employees"> employees </label><br>
+			  <label><input type="checkbox" v-model="checkedNames" id="departments" 
+			  value="departments"> departments  </label><br>
+			  <label><input type="checkbox" v-model="checkedNames" id="dept_emp" value="dept_emp"> dept_emp </label><br>
+
+			  <label><input type="checkbox" v-model="checkedNames" id="dept_manager" 
+		          value="dept_manager"> dept_manager </label><br>
+			  <label><input type="checkbox" v-model="checkedNames" id="title" value="title"> title </label><br>
+			  <label><input type="checkbox" v-model="checkedNames" id="salaries" value="salaries"> salaries </label><br>
+			  {{join_result}}
                         </div>
                     </div>
                 </div>
