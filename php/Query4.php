@@ -27,7 +27,10 @@ function Query4() {
     $result = array();
 
     foreach($prep as $row) {
-        array_push($result, $row["DepartmentName"]); /* <----- TO DO (?) ---- */
+        array_push($result, $row["dept_name"]); 
+		array_push($result, $row["birth_date"]);
+		array_push($result, $row["count"]);
+		array_push($result, $row["avg salary"]);
     }
 
     header("Content-Type: application/json");

@@ -27,7 +27,11 @@ function Query5() {
     $result = array();
 
     foreach($prep as $row) {
-        array_push($result, $row["DepartmentName"]); /* <----- TO DO (?) ---- */
+        array_push($result, $row["first_name"]);
+		array_push($result, $row["last_name"]);
+		array_push($result, $row["gender"]);
+		array_push($result, $row["salary"]);
+		array_push($result, $row["birth_date"]);
     }
 
     header("Content-Type: application/json");
