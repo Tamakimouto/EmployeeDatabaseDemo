@@ -15,15 +15,23 @@ Query1();
  */
 function Query1() {
     $db = connectDB();
-    $query = "SELECT dept_name, COUNT(departments.dept_no) AS empCount FROM departments, employees, dept_emp WHERE employees.emp_no = dept_emp.emp_no AND dept_emp.dept_no = departments.dept_no GROUP BY dept_name HAVING empCount < 17500;"; /* <--- TO DO -------- */
+    $query = (
+        "SELECT dept_name, COUNT(departments.dept_no) AS empCount
+        FROM departments, employees, dept_emp
+        WHERE employees.emp_no = dept_emp.emp_no
+        AND dept_emp.dept_no = departments.dept_no
+        GROUP BY dept_name HAVING empCount < 17500;"
+    );
 
     $prep = $db->prepare("$query");
     $prep->execute();
 
-    $result = array();
+    $result = array("query" => 1, "data" => array());
 
     foreach($prep as $row) {
-        array_push($result, $row["dept_name"]); /* <----- TO DO (?) ---- */
+        array_push($result["data"], array(
+            "department" => $row["dept_name"]
+        ));
     }
 
     header("Content-Type: application/json");
@@ -33,5 +41,4 @@ function Query1() {
 
 }
 
-?
-
+?>
