@@ -45,12 +45,12 @@
                         <div class="panel-body">
                             <div class="col-sm-3">
                                 <div v-for="dept in departments">
-                                    <input type="checkbox" :id="dept" :value="dept" v-model="checkedDepts">
+                                    <input type="checkbox" :id="dept" :value="dept" v-model="checkedDepts" @change="runCustom">
                                     <label :for="dept"> {{ dept }} </label>
                                 </div>
                             </div>
                             <div class="col-sm-9">
-                                <!-- to do -->
+                                {{ people }}
                             </div>
                         </div>
                     </div>

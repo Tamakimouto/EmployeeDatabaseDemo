@@ -74,11 +74,14 @@ $(function() {
                 });
             },
             runCustom: function() {
+                app.people = [];
                 $.ajax({
                     type: "POST",
                     data: {"departs": app.checkedDepts},
                     success: function(res) {
-                        // fill in people
+                        res.forEach(function(person) {
+                            app.people.push(person["firstName"] + person["lastName"]);
+                        });
                     }
                 });
             }
