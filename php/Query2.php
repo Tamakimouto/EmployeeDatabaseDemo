@@ -25,7 +25,8 @@ function Query2() {
         JOIN (SELECT AVG(salary) AS avgFemale
         FROM salaries s, employees e, departments d, dept_emp de
         WHERE e.emp_no = s.emp_no AND e.emp_no = de.emp_no AND d.dept_no = de.dept_no
-        AND gender = 'F')y ON 1=1");
+        AND gender = 'F')y ON 1=1
+    ");
 
     $prep = $db->prepare("$query");
     $prep->execute();

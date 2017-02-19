@@ -23,21 +23,21 @@ $(function() {
                         switch (res["query"]) {
                             case 1:
                                 res["data"].forEach(function(entry) {
-                                    app.result += entry["department"] + " ";
+                                    app.result += ", " + entry["department"];
                                 });
-                                app.result = "The department(s) with the fewest employees is " + app.result;
+                                app.result = "The department(s) with the fewest employees is/are " + app.result;
                                 break;
                             case 2:
                                 res["data"].forEach(function(entry) {
-                                    app.result += entry["department"] + " with a ratio of " + entry["ratio"] + " ";
+                                    app.result += ", " + entry["department"] + " with a ratio of " + entry["ratio"] + " ";
                                 });
                                 app.result = "The department(s) with best ratio of female:male salaries is " + app.result;
                                 break;
                             case 3:
                                 res["data"].forEach(function(entry) {
-                                    app.result += entry["firstName"] + " " + entry["lastName"];
+                                    app.result += ", " + entry["firstName"] + " " + entry["lastName"];
                                 });
-                                app.result = "Our most experienced manager(s) are " + app.result;
+                                app.result = "Our most experienced manager(s) are as follows" + app.result;
                                 break;
                             case 4:
                                 res["data"].forEach(function(entry) {
@@ -48,9 +48,9 @@ $(function() {
                                 break;
                             case 5:
                                 res["data"].forEach(function(entry) {
-                                    app.result += entry["firstName"] + " " + entry["lastName"] + " ";
+                                    app.result += ", " + entry["firstName"] + " " + entry["lastName"];
                                 });
-                                app.result = "Here are some successful females in our Company: " + app.result;
+                                app.result = "Here are some successful females in our Company " + app.result;
                                 break;
                             default:
                                 app.result = "Yo, some error occured.";
