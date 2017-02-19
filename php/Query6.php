@@ -16,14 +16,14 @@ function Query6() {
 
     // selects 10 random employees from employees table
     // that work in the selected departments
-    $query = ("
+    $query = ('
         SELECT e.first_name, e.last_name
         FROM employees e, current_dept_emp c, departments d
         WHERE e.emp_no = c.emp_no AND c.dept_no = d.dept_no
-        AND d.dept_name IN (" . implode(',', $departs) . ")
+        AND d.dept_name IN ("' . implode('","', $departs) . '")
         ORDER BY RAND()
         LIMIT 10;
-    ");
+    ');
 
     $prep = $db->prepare("$query");
     $prep->execute();

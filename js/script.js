@@ -10,10 +10,12 @@ $(function() {
                 {name: "The number of employees born in each decade and their average salaries for each Dept", file: "php/Query4.php"},
                 {name: "Female managers born before 1990, that make more than 80,000 a year", file: "php/Query5.php"}
             ],
+            customHead: "Here are some awesome people who has made things possible. Check a few of the following departments.",
             customQuery: "Some of our awesome people!",
             departments: [],
             checkedDepts: [],
             result: "",
+            peopleEx: "Huge thanks the the following people.",
             people: ""
         },
         mounted: function() {
@@ -78,9 +80,11 @@ $(function() {
                 $.ajax({
                     type: "POST",
                     data: {"departs": app.checkedDepts},
+                    url: "php/Query6.php",
                     success: function(res) {
+                        console.log(res);
                         res.forEach(function(person) {
-                            app.people.push(person["firstName"] + person["lastName"]);
+                            app.people.push(person["firstName"] + " " + person["lastName"]);
                         });
                     }
                 });
