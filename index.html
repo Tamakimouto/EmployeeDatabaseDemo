@@ -15,6 +15,7 @@
     <body>
         <div class="container" id="home">
 
+            <!-- Predefined Queries -->
             <div class="panel-group" id="accordion">
                 <div class="panel panel-default" v-for="(query, index) in queries">
                     <div class="panel-heading">
@@ -30,6 +31,8 @@
                         </div>
                     </div>
                 </div>
+
+                <!-- Custom User Entered Query -->
                 <div class="panel panel-default">
                     <div class="panel-heading">
                         <h4 class="panel-title">
@@ -40,11 +43,20 @@
                     </div>
                     <div id="collapseCustom" class="panel-collapse collapse">
                         <div class="panel-body">
-                            <!-- TO DO -->
+                            <div class="col-sm-3">
+                                <div v-for="dept in departments">
+                                    <input type="checkbox" :id="dept" :value="dept" v-model="checkedDepts">
+                                    <label :for="dept"> {{ dept }} </label>
+                                </div>
+                            </div>
+                            <div class="col-sm-9">
+                                <!-- to do -->
+                            </div>
                         </div>
                     </div>
-                </div>
-            </div>
+                </div> <!-- Custom END -->
+
+            </div> <!-- Accordion  END -->
 
         </div>
     </body>

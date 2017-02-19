@@ -11,7 +11,21 @@ $(function() {
                 {name: "Female managers born before 1990, that make more than 80,000 a year", file: "php/Query5.php"}
             ],
             customQuery: "Some of our awesome people!",
-            result: ""
+            departments: [],
+            checkedDepts: [],
+            result: "",
+            people: ""
+        },
+        mounted: function() {
+            $.ajax({
+                type: "POST",
+                url: "php/loadDepartments.php",
+                success: function(res) {
+                    res.forEach(function(dept) {
+                        app.departments.push(dept);
+                    });
+                }
+            });
         },
         methods: {
             runAjax: function(file) {
@@ -57,6 +71,15 @@ $(function() {
                                 break;
                         }
                     } // Ajax Success
+                });
+            },
+            runCustom: function() {
+                $.ajax({
+                    type: "POST",
+                    data: {"departs": app.checkedDepts},
+                    success: function(res) {
+                        // fill in people
+                    }
                 });
             }
         }
