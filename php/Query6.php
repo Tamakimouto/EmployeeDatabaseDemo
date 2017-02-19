@@ -14,10 +14,12 @@ function Query6() {
     $db = connectDB();
     $departs = $_POST["departs"];
 
-    // Please correct this SQL Statement
+    // selects 10 random employees from employees table
     $query = ("
-        SELECT 10_people FROM employees
-        WHERE persons_department IN (" . implode(",", $departs). ")"
+        SELECT e.first_name, e.last_name
+        FROM employees e
+		ORDER BY RAND()
+		LIMIT 10;
     );
 
     $prep = $db->prepare("$query");
