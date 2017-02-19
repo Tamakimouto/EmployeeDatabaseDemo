@@ -19,11 +19,11 @@ function Query2() {
     $query = (
         "SELECT d.dept_name, y.avgFemale/x.avgMale AS 'female:male_avg_salary'
         FROM (SELECT AVG(salary) AS avgMale
-        FROM salaries s, employees e, department d, dept_emp de
+        FROM salaries s, employees e, departments d, dept_emp de
         WHERE e.emp_no = s.emp_no AND e.emp_no = de.emp_no AND d.dept_no = de.dept_no
         AND gender = 'M') x
         JOIN (SELECT AVG(salary) AS avgFemale
-        FROM salaries s, employees e, department d, dept_emp de
+        FROM salaries s, employees e, departments d, dept_emp de
         WHERE e.emp_no = s.emp_no AND e.emp_no = de.emp_no AND d.dept_no = de.dept_no
         AND gender = 'F')y ON 1=1");
 
@@ -34,8 +34,8 @@ function Query2() {
 
     foreach($prep as $row) {
         array_push($result["data"], array(
-			"department" = $row["dept_name"],
-            "ratio" = $row["female:male_avg_salary"]
+            "department" => $row["dept_name"],
+            "ratio" => $row["female:male_avg_salary"]
         ));
     }
 

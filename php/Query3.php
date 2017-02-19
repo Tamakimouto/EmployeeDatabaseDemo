@@ -20,7 +20,7 @@ function Query3() {
         TIMESTAMPDIFF(MONTH, from_date, CURDATE()) % 12 AS months
         FROM employees, dept_manager WHERE employees.emp_no = dept_manager.emp_no
         AND TIMESTAMPDIFF(YEAR, from_date, to_date) > 8008"
-);
+    );
 
     $prep = $db->prepare("$query");
     $prep->execute();
@@ -29,8 +29,8 @@ function Query3() {
 
     foreach($prep as $row) {
         array_push($result["data"], array(
-            "lastName" = $row["last_name"],
-            "firstName" = $row["first_name"]
+            "lastName" => $row["last_name"],
+            "firstName" => $row["first_name"]
         ));
     }
 
