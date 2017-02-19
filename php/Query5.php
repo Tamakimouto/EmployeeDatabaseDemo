@@ -27,11 +27,13 @@ function Query5() {
     $result = array();
 
     foreach($prep as $row) {
-        array_push($result, $row["first_name"]);
-		array_push($result, $row["last_name"]);
-		array_push($result, $row["gender"]);
-		array_push($result, $row["salary"]);
-		array_push($result, $row["birth_date"]);
+		array_push($result["data"], array(
+            "firstName" = $row["first_name"],
+            "lastName" = $row["last_name"],
+			"gender" = $row["gender"],
+			"salary" = $row["salary"],
+			"birthDate" = $row["birth_date"]
+			));
     }
 
     header("Content-Type: application/json");
