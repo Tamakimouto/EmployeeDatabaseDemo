@@ -1,0 +1,14 @@
+Project 2 Group Leader Report
+Emily Jackson
+
+Group members: Emily Jackson (leader), Kathryn Soll, Anthony Zheng, Jacob Shaw
+Group: Heapsters
+
+Project 2 was done through GitHub with not much in-person interaction. We divided the responsibilities into frontend and backend. Emily and Kathryn worked on SQL queries on the backend, while Anthony and Jacob worked on creating the frontend with PHP.
+
+Each of the members contributed and worked together very well.
+
+
+Project 2 Schedule of meetings:
+2/13/2017: 6:00 PM - 7:00 PM
+All other communication was completed via GroupMe and GitHub.
