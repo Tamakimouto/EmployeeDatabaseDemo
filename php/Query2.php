@@ -16,18 +16,25 @@ Query2();
  */
 function Query2() {
     $db = connectDB();
-    $query = (
-        "SELECT d.dept_name, y.avgFemale/x.avgMale AS 'female:male_avg_salary'
-        FROM (SELECT AVG(salary) AS avgMale
-        FROM salaries s, employees e, departments d, dept_emp de
-        WHERE e.emp_no = s.emp_no AND e.emp_no = de.emp_no AND d.dept_no = de.dept_no
-        AND gender = 'M') x
-        JOIN (SELECT AVG(salary) AS avgFemale
-        FROM salaries s, employees e, departments d, dept_emp de
-        WHERE e.emp_no = s.emp_no AND e.emp_no = de.emp_no AND d.dept_no = de.dept_no
-        AND gender = 'F')y ON 1=1
-		GROUP BY d.dept_name
-    ");
+    $query = ("SELECT DISTINCT MAX(y.avgFemale/x.avgMale) AS 'female:male salary', y.dept_name 
+        FROM (
+                SELECT departments.dept_name, AVG(salary) AS avgMale 
+                FROM salaries, employees, dept_emp, departments 
+                WHERE employees.emp_no = salaries.emp_no 
+                AND employees.emp_no = dept_emp.emp_no
+                AND departments.dept_no = dept_emp.dept_no 
+                AND gender = 'M'
+                GROUP BY dept_emp.dept_no) x 
+        JOIN (SELECT departments.dept_name, AVG (salary) AS avgFemale
+                FROM salaries, employees, dept_emp, departments 
+                WHERE employees.emp_no = salaries.emp_no 
+                AND employees.emp_no = dept_emp.emp_no
+                AND departments.dept_no = dept_emp.dept_no 
+                AND gender = 'F'
+                GROUP BY dept_emp.dept_no) y
+	ON 1=1
+	GROUP BY y.dept_name
+	HAVING MAX(y.avgFemale/x.avgMale) > 1.4;");
 
     $prep = $db->prepare("$query");
     $prep->execute();
